@@ -1,4 +1,4 @@
-export functio getAllTimeStats = (players, matches) => {
+export function getAllTimeStats(players, matches) {
   const stats = {};
 
   players.forEach((p) => {
