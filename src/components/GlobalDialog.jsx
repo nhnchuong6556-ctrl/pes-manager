@@ -1,4 +1,4 @@
-export default function GlobalDialog({ dialog, setDialog }) {
+export default function GlobalDialog({ dialog, setDialog, handleAdminLogin }) {
   if (!dialog) return null;
 
   return (
