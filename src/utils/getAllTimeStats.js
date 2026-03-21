@@ -129,12 +129,13 @@ export function getAllTimeStats(players, matches) {
       winRate: item.P > 0 ? (item.W / item.P) * 100 : 0,
       GD: item.GF - item.GA,
     }))
-    .sort(
-      (a, b) =>
-        b.W - a.W ||
-        b.winRate - a.winRate ||
-        b.GD - a.GD ||
-        b.GF - a.GF ||
-        a.name.localeCompare(b.name)
-    );
-};
+    .sort((a, b) => {
+  return (
+    b.W - a.W ||
+    b.winRate - a.winRate ||
+    b.GD - a.GD ||
+    b.GF - a.GF ||
+    a.name.localeCompare(b.name)
+  );
+});
+  }
