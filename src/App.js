@@ -324,7 +324,7 @@ export default function App() {
             `${ROOM_ID}_config`,
             "approvals"
           );
-          const updated = approvedDevicesList.filter(
+          const updated = (approvedDevicesList || []).filter(
             (id) => id !== targetDeviceId
           );
           await setDoc(ref, { approvedDevices: updated }, { merge: true });
@@ -1167,12 +1167,12 @@ export default function App() {
               Danh sách các thiết bị đang có quyền chỉnh sửa:
             </div>
             <div className="space-y-3 max-h-[50vh] overflow-y-auto custom-scroll pr-2">
-              {approvedDevicesList.length === 0 ? (
+              {(approvedDevicesList || []).length === 0 ? (
                 <div className="text-center text-slate-400 italic p-4 text-sm">
                   Chưa có thiết bị nào được cấp quyền
                 </div>
               ) : (
-                approvedDevicesList.map((devId) => (
+                (approvedDevicesList || []).map((devId) => (
                   <div
                     key={devId}
                     className="flex justify-between items-center bg-slate-50 p-3 sm:p-4 rounded-xl border border-slate-200"
@@ -1350,7 +1350,7 @@ export default function App() {
                     className="w-full text-xs font-bold text-blue-700 bg-blue-50 border border-blue-100 shadow-sm p-3.5 rounded-xl hover:bg-blue-100 flex items-center justify-center gap-2 transition-all"
                   >
                     <Monitor size={16} /> QUẢN LÝ MÁY (
-                    {approvedDevicesList.length})
+                    {(approvedDevicesList || []).length})
                   </button>
                   <button
                     onClick={handleGrantDeviceAccess}
@@ -1389,7 +1389,7 @@ export default function App() {
               onClick={() => setShowDeviceManager(true)}
               className="shrink-0 bg-emerald-100 hover:bg-emerald-200 text-emerald-700 p-2.5 rounded-lg flex items-center justify-center gap-2 font-bold text-[10px] uppercase tracking-widest transition-colors mr-2 shadow-sm"
             >
-              <Monitor size={14} /> Quản Lý Máy ({approvedDevicesList.length})
+              <Monitor size={14} /> Quản Lý Máy ({(approvedDevicesList || []).length})
             </button>
           ) : (
             <div className="shrink-0 bg-blue-100 text-blue-700 p-2.5 rounded-lg flex items-center justify-center gap-2 font-bold text-[10px] uppercase tracking-widest mr-2 shadow-sm">
