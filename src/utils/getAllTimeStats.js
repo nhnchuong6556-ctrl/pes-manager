@@ -138,6 +138,3 @@ export function getAllTimeStats(players, matches) {
         a.name.localeCompare(b.name)
     );
 };
-
-
-}
